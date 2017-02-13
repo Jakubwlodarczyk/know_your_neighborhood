@@ -15,6 +15,7 @@ class Menu:
             Ui.print_menu()
             option = Ui.get_input("Choose an option: ")
             if option == '1':
+                os.system('clear')
                 Ui.print_table(Cities.count_statistic(), 'LIST STATISTICS', ['Małopolska', 'count'])
                 Ui.get_input('\nENTER to go back')
             elif option == '2':
@@ -28,8 +29,9 @@ class Menu:
                 Ui.get_input('\nEnter to continue:')
             elif option == '3':
                 os.system('clear')
-                Ui.print_message("County's name with the largest number of communities:\n{}"
-                                 .format(Cities.get_largest_county()))
+                Ui.print_message("County's name with the largest number of communities:"
+                                 "\n\n{}, has {} communities"
+                                 .format(Cities.get_largest_county()[1], Cities.get_largest_county()[0]))
                 Ui.get_input('\nEnter to continue:')
             elif option == '4':
                 os.system('clear')
@@ -38,14 +40,23 @@ class Menu:
                 for i in sorted(Cities.get_multi_types_objects()):
                     Ui.print_message("{}. {}".format(idx, i))
                     idx += 1
-                Ui.get_input('Enter to continue:')
+                Ui.get_input('\nEnter to continue:')
             elif option == '5':
-                pass
+                os.system('clear')
+                user_input = Ui.get_input('Searching for: ')
+                search_result = Cities.get_search_items(user_input)
+                if search_result:
+                    Ui.print_message('Found {}'.format(len(search_result)))
+                    Ui.print_table(sorted(search_result), "", ['Location', 'Type'])
+                    Ui.get_input('\nEnter to continue:')
+                else:
+                    Ui.print_message('No match')
+                    Ui.get_input('\nEnter to continue:')
             elif option == '0':
                 os.system('clear')
                 sys.exit()
             else:
-                Ui.print_message("Wrong input, try again.")
+                Ui.print_message("\nWrong input, try again.")
 
 
 def main():
