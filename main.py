@@ -32,7 +32,13 @@ class Menu:
                                  .format(Cities.get_largest_county()))
                 Ui.get_input('\nEnter to continue:')
             elif option == '4':
-                pass
+                os.system('clear')
+                idx = 1
+                Ui.print_message("Locations, that belong to more than one category:\n")
+                for i in sorted(Cities.get_multi_types_objects()):
+                    Ui.print_message("{}. {}".format(idx, i))
+                    idx += 1
+                Ui.get_input('Enter to continue:')
             elif option == '5':
                 pass
             elif option == '0':
