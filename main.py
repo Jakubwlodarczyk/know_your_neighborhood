@@ -27,7 +27,10 @@ class Menu:
                     idx += 1
                 Ui.get_input('\nEnter to continue:')
             elif option == '3':
-                pass
+                os.system('clear')
+                Ui.print_message("County's name with the largest number of communities:\n{}"
+                                 .format(Cities.get_largest_county()))
+                Ui.get_input('\nEnter to continue:')
             elif option == '4':
                 pass
             elif option == '5':
