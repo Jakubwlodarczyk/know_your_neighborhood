@@ -103,7 +103,8 @@ class Cities:
                     county_number = item.county
         for item in Cities.city_list:
             if county_number == item.county and item.type == 'powiat':
-                return item
+                item_details = [community_number, item]
+                return item_details
 
     @classmethod
     def get_multi_types_objects(cls):
@@ -120,3 +121,21 @@ class Cities:
             else:
                 cities.append(item.name)
         return multi_types
+
+    @classmethod
+    def get_search_items(cls, user_input):
+        """
+        Search matching words
+        :param user_input: fragment or whole word to search
+        :return: list with matched words
+        """
+        search_result = []
+        for item in Cities.city_list:
+            if user_input in item.name:
+                row = [item.name, item.type]
+                search_result.append(row)
+        if search_result:
+            return search_result
+        else:
+            return False
+
