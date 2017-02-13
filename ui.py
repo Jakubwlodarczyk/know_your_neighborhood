@@ -22,9 +22,9 @@ class Ui:
             len_for_col.append(len_col)
 
         how_wide = 0
-        for name in title_list:
-            x = (len_for_col[title_list.index(name)])
-            how_wide += (len(("|{: <" + str(x + 2) + "}").format(name)))
+        for item in title_list:
+            x = (len_for_col[title_list.index(item)])
+            how_wide += (len(("|{: <" + str(x + 2) + "}").format(item)))
         print('-' * how_wide)
 
         for name in title_list:
@@ -53,7 +53,7 @@ class Ui:
         return user_input
 
     @staticmethod
-    def print_text(text):
+    def print_message(text):
         """
         Print text
         :param text: string to print
