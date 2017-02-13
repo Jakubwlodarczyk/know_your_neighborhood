@@ -88,3 +88,19 @@ class Cities:
         words_list.sort(key=len, reverse=True)
         return words_list[:amount]
 
+    @classmethod
+    def get_largest_county(cls):
+        """
+        Check which count is the largest
+        :return: The largest county
+        """
+        county_number = ''
+        community_number = 0
+        for item in Cities.city_list:
+            if item.community:
+                if int(item.community) > community_number:
+                    community_number = int(item.community)
+                    county_number = item.county
+        for item in Cities.city_list:
+            if county_number == item.county and item.type == 'powiat':
+                return item
