@@ -15,7 +15,8 @@ class Menu:
             Ui.print_menu()
             option = Ui.get_input("Choose an option: ")
             if option == '1':
-                pass
+                Ui.print_table(Cities.count_statistic(), 'LIST STATISTICS', ['Małopolska', 'count'])
+                Ui.get_input('ENTER to go back')
             elif option == '2':
                 pass
             elif option == '3':
