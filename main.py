@@ -16,9 +16,16 @@ class Menu:
             option = Ui.get_input("Choose an option: ")
             if option == '1':
                 Ui.print_table(Cities.count_statistic(), 'LIST STATISTICS', ['Małopolska', 'count'])
-                Ui.get_input('ENTER to go back')
+                Ui.get_input('\nENTER to go back')
             elif option == '2':
-                pass
+                os.system('clear')
+                name_list = Cities.get_name_list()
+                idx = 1
+                Ui.print_message("Cities with longest names\n")
+                for i in Cities.get_longest_words(name_list):
+                    Ui.print_message("{}. {}".format(idx, i))
+                    idx += 1
+                Ui.get_input('\nEnter to continue:')
             elif option == '3':
                 pass
             elif option == '4':
