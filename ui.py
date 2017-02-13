@@ -11,7 +11,6 @@ class Ui:
         :param title: string, info about table
         :param title_list: list of strings, first line of table
         """
-        os.system("clear")
         print(title)
         len_for_col = []
         for title_iterator in range(len(title_list)):
