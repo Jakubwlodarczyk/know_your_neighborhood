@@ -39,3 +39,29 @@ class Cities:
             for row in reader:
                 new_table.append(row)
         return new_table[1:]
+
+    @classmethod
+    def count_statistic(cls):
+        """
+        Count statistic
+        :return: list with statistic of all city
+        """
+        statistic = [['województwo', 0], ['powiat', 0], ['gmina miejska', 0], ['gmina wiejska', 0],
+                     ['gmina miejsko-wiejska', 0], ['obszar wiejski', 0], ['miasto', 0],
+                     ['miasto na prawach powiatu', 0], ['delegatura', 0]]
+        for item in cls.city_list:
+            statistic = Cities.change_statistic_value(item, statistic)
+        return statistic
+
+    @staticmethod
+    def change_statistic_value(object_to_check, statistic_list):
+        """
+        change value in statistic list
+        :param object_to_check: object to check which type it is
+        :param statistic_list: list with statistic to change
+        :return: statistic list
+        """
+        for item in statistic_list:
+            if object_to_check.type == item[0]:
+                item[1] += 1
+        return statistic_list
