@@ -104,3 +104,19 @@ class Cities:
         for item in Cities.city_list:
             if county_number == item.county and item.type == 'powiat':
                 return item
+
+    @classmethod
+    def get_multi_types_objects(cls):
+        """
+        Check which object has more than 1 type
+        :return: list ( contain object with more than 1 type)
+        """
+        cities = []
+        multi_types = []
+        for item in Cities.city_list:
+            if item.name in cities:
+                if item.name not in multi_types:
+                    multi_types.append(item.name)
+            else:
+                cities.append(item.name)
+        return multi_types
