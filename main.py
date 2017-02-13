@@ -27,7 +27,8 @@ class Menu:
             elif option == '0':
                 os.system('clear')
                 sys.exit()
-                pass
+            else:
+                Ui.print_message("Wrong input, try again.")
 
 
 def main():
